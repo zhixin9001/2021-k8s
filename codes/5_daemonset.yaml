@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-demo
+spec:
+  selector:
+    matchLabels:
+      app: daemonset-pod
+  template:
+    metadata:
+      labels:
+        app: daemonset-pod
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: docker-desktop
+      containers:
+      - name: myapp
+        image: ikubernetes/myapp:v1
+        imagePullPolicy: Never

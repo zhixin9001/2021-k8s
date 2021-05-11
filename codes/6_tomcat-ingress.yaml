@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: tomcat-ingress
+spec:
+  rules:
+  - host: tomcat.ilinux.io
+    http:
+      paths:
+        - path:
+          backend:
+            serviceName: tomcat-svc
+            servicePort: 80
+

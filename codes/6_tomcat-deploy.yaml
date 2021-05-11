@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-deploy
+spec:
+  replicas: 2
+  minReadySeconds: 5
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: tomcat
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      containers:
+      - name: tomcat
+        image: tomcat:8.0.50-jre8-alpine  
+        ports:
+        - name: httpport
+          containerPort: 8080
+        - name: ajpport
+          containerPort: 8009
