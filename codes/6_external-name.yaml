@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-redis-svc
+spec:
+  type: ExternalName
+  externalName: redis.ilinux.io
+  ports:
+  - name: http
+    port: 6379
+    targetPort: 6379
+    protocol: TCP

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: ikubernetes/myapp:v2
+        image: ikubernetes/myapp:v3
         imagePullPolicy: Never     
         ports:
         - name: http
