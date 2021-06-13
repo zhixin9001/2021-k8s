@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-test-pod
+  labels:
+    app: label-env-test-pod
+spec:
+  containers:
+  - name: env-test-container
+    image: busybox
+    command: ["/bin/sh", "-c", "env"]
+    env:
+    - name: MY_POD_NAME
+      valueFrom:
+        fieldRef: 
+          fieldPath: metadata.name
+    - name: MY_APP_LABEL
+      valueFrom:
+        fieldRef: 
+          fieldPath: metadata.labels['app']

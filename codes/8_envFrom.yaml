@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envfrom-test-pod
+  labels:
+    app: label-envfrom-test-pod
+spec:
+  containers:
+  - name: envfrom-test-container
+    image: busybox
+    command: ["/bin/sh", "-c", "env"]
+    envFrom:
+    - prefix: MY_
+      configMapRef:
+        name: yaml-config
+        optional: false

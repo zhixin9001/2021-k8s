@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-pvc
+spec:
+  volumes:
+  - name: nfs-vol-1
+    persistentVolumeClaim:
+      claimName: pvc-nfs-1
+  containers:
+  - name: myapp
+    image: ikubernetes/myapp:v1
+    imagePullPolicy: Never     
+

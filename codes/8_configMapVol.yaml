@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-vol
+  labels:
+    app: configmap-vol
+spec:
+  containers:
+  - name: configmap-vol
+    image: busybox
+    command: ["/bin/sh", "-c", "sleep 3600"]
+    volumeMounts:
+    - name: config-vol
+      mountPath: /etc/test
+      readOnly: true
+  volumes:
+  - name: config-vol
+    configMap:
+      name: file-config
+      items:
+      - key: file-key1
+        path: file-key1-path
